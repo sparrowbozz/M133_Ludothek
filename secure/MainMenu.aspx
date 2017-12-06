@@ -7,16 +7,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 
-    <link rel="stylesheet" href="design.css" />
+    <link rel="stylesheet" href="design/design.css" />
 
 
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-		<p>Hallooooo</p>
-		<a href="#!" onclick="handleLogoutClick()"></a>
+    
+    <div id="mainContainer">
+
+        <div class="items"></div>
+        <div class="items"></div>
+        <div class="items"></div>
+        <div class="items"></div>
+
+
     </div>
+
+
     </form>
 </body>
 </html>

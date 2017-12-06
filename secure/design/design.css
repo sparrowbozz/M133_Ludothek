@@ -1,5 +1,18 @@
 ﻿body 
 {
 
-    background-color:red;
+    
 }
+#mainContainer
+{
+    display: flex; 
+    flex-direction: row;
+}
+.items
+{
+    flex-grow: 1;
+    background-color:deepskyblue;
+    height: 500px;
+    margin: 0 10px;
+}
+
