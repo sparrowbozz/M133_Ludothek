@@ -11,11 +11,11 @@
     <form id="loginForm" runat="server">
 		<table>
 		<tr><td>
-				<label for="UsernameField">Username:</label>
+				<label for="EmailField">E-Mail:</label>
 		    </td>
 			<td>
-				<asp:TextBox ID="UsernameField" runat="server" />
-				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="UsernameField" ErrorMessage="Please fill in the field" runat="server" />
+				<asp:TextBox ID="EmailField" runat="server" />
+				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
 			</td>
 		</tr>
 		<tr>
@@ -24,7 +24,7 @@
 			</td>
 			<td>
 				<asp:TextBox ID="PasswordField" runat="server" />
-				<asp:RequiredFieldValidator ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Please fill in your password" runat="server" />
+				<asp:RequiredFieldValidator ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
 			</td>
 		</tr>
 		<tr>

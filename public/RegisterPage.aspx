@@ -12,11 +12,20 @@
     <form id="loginForm" runat="server">
 		<table>
 		<tr><td>
-				<label for="UsernameField">Username:</label>
+				<label for="EmailField">E-Mail:</label>
 		    </td>
 			<td>
-				<asp:TextBox ID="UsernameField" runat="server" />
-				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="UsernameField" ErrorMessage="Please fill in the field" runat="server" />
+				<asp:TextBox ID="EmailField" runat="server" />
+				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
+			</td>
+		</tr>
+           <tr><td>
+				<label for="EmailRepeatField">E-Mail bestätigen:</label>
+		    </td>
+			<td>
+				<asp:TextBox ID="EmailRepeatField" runat="server" />
+				<asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="EmailRepeatField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
+                <asp:CompareValidator ID="CompareMailValidator" ControlToValidate="EmailRepeatField" ControlToCompare="EmailField" ErrorMessage="Bitte geben Sie die identische Mail" type="String" runat="server" />
 			</td>
 		</tr>
 		<tr>
@@ -24,8 +33,8 @@
 				<label for="PasswordField" runat="server" />Password:</label>
 			</td>
 			<td>
-				<asp:TextBox ID="PasswordField" runat="server" />
-				<asp:RequiredFieldValidator ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Please fill in your password" runat="server" />
+				<asp:TextBox ID="PasswordField" TextMode="Password" runat="server" />
+				<asp:RequiredFieldValidator ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
 			</td>
 		</tr>
 		<tr>

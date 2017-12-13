@@ -21,6 +21,7 @@
         <div class="items"></div>
         <div class="items"></div>
 
+		<a href="#!" onClick="handleLogoutClick()" runat="server"></a>
 
     </div>
 

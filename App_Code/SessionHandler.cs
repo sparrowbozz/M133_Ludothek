@@ -35,6 +35,16 @@ public class SessionHandler
 		return true;
 	}
 
+	public bool isUserLoggedIn()
+	{
+		return userToken != null;
+	}
+
+	public void logoutUser()
+	{
+		userToken = null;
+	}
+
 	private String generateUserToken()
 	{
 		return "userLoggedIn";

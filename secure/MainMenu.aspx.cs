@@ -14,6 +14,8 @@ public partial class MainMenu : System.Web.UI.Page
 
 	public void handleLogoutClick()
 	{
-
+		SessionHandler.getInstance().logoutUser();
 	}
+
+	
 }
