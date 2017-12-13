@@ -37,7 +37,8 @@ public class DataProvider
         if (!File.Exists(AppConst.USER_FILE))
         {
             Directory.CreateDirectory(Path.GetDirectoryName(AppConst.USER_FILE));
-            File.Create(AppConst.USER_FILE);
+            FileStream stream = File.Create(AppConst.USER_FILE);
+            stream.Close();
         }
 
         StreamReader reader = new StreamReader(AppConst.USER_FILE);
