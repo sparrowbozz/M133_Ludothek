@@ -34,6 +34,8 @@
 			</td>
 		</tr>
 		</table>
+        <a href="ForgotPage.aspx" onclick="">Passwort zurücksetzen</a>
+        <a href="RegisterPage.aspx" onclick="">Eigenen Account erstellen</a>
     </form>
 </body>
 </html>

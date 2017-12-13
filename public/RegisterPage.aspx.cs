@@ -36,6 +36,11 @@ public partial class _Default : System.Web.UI.Page
 		Response.Redirect("MainMenu.aspx");
 	}
 
+    private void handleRegister()
+    {
+        //String email
+    }
+
 	private void handleLogin()
 	{
 		String username = EmailField.Text;
