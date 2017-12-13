@@ -42,17 +42,15 @@ public partial class _Default : System.Web.UI.Page
         String email = EmailField.Text;
         String password = PasswordField.Text;
         User newUser = new User(email, password);
-        DataProvider.getInstance().saveUserInformation(newUser);
+        if(!DataProvider.getInstance().doesUserExist(newUser))
+        {
+            servererror.InnerHtml = "";
+            DataHandler.getInstance().saveUserInformation(newUser);
+        }
+        else
+        {
+            servererror.InnerHtml = "Nutzer existiert bereits!";
+        }
+        
     }
-
-	private void handleLogin()
-	{
-		String username = EmailField.Text;
-		String password = PasswordField.Text;
-		if (SessionHandler.getInstance().loginUser(username, password))
-		{
-			Session["key"] = SessionHandler.getInstance().getUserToken();
-		}
-
-	}
 }

@@ -56,7 +56,7 @@
                 </td>
 		    </tr>
 		    <tr>
-			    <td></td>
+			    <td><p class="error" id="servererror" runat="server"></p></td>
 			    <td>
 				    <input type="submit" value="Registrieren" id="registerButton" runat="server"/>
 			    </td>

@@ -30,7 +30,7 @@ public partial class _Default : System.Web.UI.Page
 
 	private void redirectToUserSection()
 	{
-		Response.Redirect("MainMenu.aspx");
+		Response.Redirect("../secure/MainMenu.aspx");
 	}
 
 	private void handleLogin()

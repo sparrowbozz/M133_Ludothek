@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Zusammenfassungsbeschreibung für DataProvider
+/// Holt Daten von Files
 /// </summary>
 public class DataProvider
 {
@@ -27,33 +27,29 @@ public class DataProvider
         return instance;
     }
 
-    public String getUserInformationen(String username)
+    public bool doesUserExist(User user)
+    {
+        DataHelper.createFileAndDirectory(AppConst.USER_FILE);
+        String userJson = DataHelper.getContentOfFile(AppConst.USER_FILE);
+        List<User> users = JsonConvert.DeserializeObject<List<User>>(userJson);
+        foreach(User tmpUser in users)
+        {
+            if(tmpUser.email == user.email)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getUserInformationen(User user)
     {
         return "";
     }
 
-    public void saveUserInformation(User newUser)
-    {
-        if (!File.Exists(AppConst.USER_FILE))
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(AppConst.USER_FILE));
-            FileStream stream = File.Create(AppConst.USER_FILE);
-            stream.Close();
-        }
+   
 
-        StreamReader reader = new StreamReader(AppConst.USER_FILE);
-        String contentOfFile = reader.ReadToEnd();
-        reader.Close();
-        List<User> users = JsonConvert.DeserializeObject<List<User>>(contentOfFile);
-        if(users == null)
-        {
-            users = new List<User>();
-        }
-        users.Add(newUser);
-
-        String newJson = JsonConvert.SerializeObject(users);
-        File.WriteAllText(AppConst.USER_FILE, newJson);
-    }
+    
 
 
 

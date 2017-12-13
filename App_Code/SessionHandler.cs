@@ -55,9 +55,14 @@ public class SessionHandler
 		return userToken;
 	}
 
-	private bool checkUserLogin(String username, String password)
+	private bool checkUserLogin(String email, String password)
 	{
-		return (username == "admin" && password == "eli");
+        User newUser = new User(email, password);
+        if (DataProvider.getInstance().doesUserExist(newUser))
+        {
+            return true;
+        }
+        return false;
 	}
 
 }
