@@ -9,9 +9,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <p>Bitte geben Sie ihre E-Mail an:</p>
+        <table>
+		<tr><td>
+				<label for="EmailField">E-Mail:</label>
+		    </td>
+			<td>
+				<asp:TextBox ID="EmailField" runat="server" />
+				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
+			</td>
+		</tr>
+        <tr>
+			<td></td>
+			<td>
+				<input type="submit" value="Passwort zurücksetzen" id="forgotButton" runat="server"/>
+			</td>
+		</tr>
     </form>
 </body>
 </html>

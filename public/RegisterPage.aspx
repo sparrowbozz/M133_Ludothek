@@ -37,6 +37,16 @@
 				<asp:RequiredFieldValidator ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
 			</td>
 		</tr>
+            <tr>
+			<td>
+				<label for="PasswordRepeatField" runat="server" />Password:</label>
+			</td>
+			<td>
+				<asp:TextBox ID="PasswordRepeatField" TextMode="Password" runat="server" />
+				<asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="PasswordRepeatField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
+                <asp:CompareValidator ID="CompareValidator1" ControlToValidate="PasswordField" ControlToCompare="PasswordRepeatField" ErrorMessage="Bitte geben Sie dasselbe Passwort ein" type="String" runat="server" />
+			</td>
+		</tr>
 		<tr>
 			<td></td>
 			<td>

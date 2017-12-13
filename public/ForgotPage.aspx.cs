@@ -9,6 +9,15 @@ public partial class public_ForgotPage : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(IsPostBack)
+        {
+            handleForgotPassword();
+        }
+    }
+
+    private void handleForgotPassword()
+    {
+        String forgotEmail = EmailField.Text;
 
     }
 }

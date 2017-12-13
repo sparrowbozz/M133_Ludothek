@@ -11,8 +11,9 @@ public partial class _Default : System.Web.UI.Page
 	{
 		if(IsPostBack)
 		{
-			handleLogin();
-		}
+            handleRegister();
+
+        }
 		handleSession();
 	}
 
@@ -33,12 +34,15 @@ public partial class _Default : System.Web.UI.Page
 	 **/
 	private void redirectToUserSection()
 	{
-		Response.Redirect("MainMenu.aspx");
+		//Response.Redirect("MainMenu.aspx");
 	}
 
     private void handleRegister()
     {
-        //String email
+        String email = EmailField.Text;
+        String password = PasswordField.Text;
+        User newUser = new User(email, password);
+        DataProvider.getInstance().saveUserInformation(newUser);
     }
 
 	private void handleLogin()
