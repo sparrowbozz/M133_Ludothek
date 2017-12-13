@@ -6,54 +6,63 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Registrieren</title>
+    <link href="design/style.css" rel="stylesheet" />
 </head>
 <body>
-	<p>Fülle folgende Felder aus</p>
+	
     <form id="loginForm" runat="server">
-		<table>
-		<tr><td>
-				<label for="EmailField">E-Mail:</label>
-		    </td>
-			<td>
-				<asp:TextBox ID="EmailField" runat="server" />
-				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
-			</td>
-		</tr>
-           <tr><td>
-				<label for="EmailRepeatField">E-Mail bestätigen:</label>
-		    </td>
-			<td>
-				<asp:TextBox ID="EmailRepeatField" runat="server" />
-				<asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="EmailRepeatField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
-                <asp:CompareValidator ID="CompareMailValidator" ControlToValidate="EmailRepeatField" ControlToCompare="EmailField" ErrorMessage="Bitte geben Sie die identische Mail" type="String" runat="server" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="PasswordField" runat="server" />Password:</label>
-			</td>
-			<td>
-				<asp:TextBox ID="PasswordField" TextMode="Password" runat="server" />
-				<asp:RequiredFieldValidator ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
-			</td>
-		</tr>
-            <tr>
-			<td>
-				<label for="PasswordRepeatField" runat="server" />Password:</label>
-			</td>
-			<td>
-				<asp:TextBox ID="PasswordRepeatField" TextMode="Password" runat="server" />
-				<asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="PasswordRepeatField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
-                <asp:CompareValidator ID="CompareValidator1" ControlToValidate="PasswordField" ControlToCompare="PasswordRepeatField" ErrorMessage="Bitte geben Sie dasselbe Passwort ein" type="String" runat="server" />
-			</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>
-				<input type="submit" value="Registrieren" id="registerButton" runat="server"/>
-			</td>
-		</tr>
-		</table>
+		<div id="mainContainer">
+            <table>
+                <tr>
+                    <td><h1>Registrieren:</h1></td>
+                </tr>
+		        <tr>
+                <td>
+				    <label for="EmailField">E-Mail:</label>	 
+                </td>
+                <td>     
+				    <asp:TextBox ID="EmailField" runat="server" />
+				    <asp:RequiredFieldValidator class="error" ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte ausfüllen" runat="server" />
+                </td>
+		    </tr>
+               <tr><td>
+				    <label for="EmailRepeatField">E-Mail bestätigen:</label>
+		        </td>
+			    <td>
+                    
+				    <asp:TextBox ID="EmailRepeatField" runat="server" />
+                    <asp:RequiredFieldValidator class="error" ID="RequiredFieldValidator1" ControlToValidate="EmailRepeatField" ErrorMessage="Bitte ausfüllen" runat="server" />
+                    <asp:CompareValidator class="error" ID="CompareMailValidator" ControlToValidate="EmailRepeatField" ControlToCompare="EmailField" ErrorMessage="Felder stimmen nicht überein." type="String" runat="server" />
+                </td>
+		    </tr>
+		    <tr>
+			    <td>
+				    <label for="PasswordField" runat="server" />Password:</label>
+			    </td>
+			    <td>
+				    <asp:TextBox ID="PasswordField" TextMode="Password" runat="server" />
+				    <asp:RequiredFieldValidator class="error" ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Bitte ausfüllen" runat="server" />
+                </td>
+		    </tr>
+                <tr>
+			    <td>
+				    <label for="PasswordRepeatField" runat="server" />Password:</label>
+			    </td>
+			    <td>
+                    
+				    <asp:TextBox ID="PasswordRepeatField" TextMode="Password" runat="server" />
+                    <asp:RequiredFieldValidator class="error" ID="RequiredFieldValidator2" ControlToValidate="PasswordRepeatField" ErrorMessage="Bitte ausfüllen" runat="server" />
+                    <asp:CompareValidator class="error" ID="CompareValidator1" ControlToValidate="PasswordField" ControlToCompare="PasswordRepeatField" ErrorMessage="Felder stimmen nicht überein." type="String" runat="server" />
+                </td>
+		    </tr>
+		    <tr>
+			    <td></td>
+			    <td>
+				    <input type="submit" value="Registrieren" id="registerButton" runat="server"/>
+			    </td>
+		    </tr>
+		    </table>
+         </div>
     </form>
 </body>
 </html>
