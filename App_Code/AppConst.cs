@@ -15,5 +15,10 @@ public class AppConst
         //
     }
 
-    public static String USER_FILE = "C:/Ludothek/user_file.txt";
+    public static String USER_FILE = "C:\\Users\\"+ getUsername() + "\\Documents\\Visual Studio 2015\\Ludothek\\users.txt";
+
+    private static String getUsername()
+    {
+        return Environment.UserName;
+    }
 }

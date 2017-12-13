@@ -15,12 +15,12 @@ public class DataProvider
 
     private DataProvider()
     {
-        
+
     }
 
     public static DataProvider getInstance()
     {
-        if(instance==null)
+        if (instance == null)
         {
             instance = new DataProvider();
         }
@@ -34,13 +34,27 @@ public class DataProvider
 
     public void saveUserInformation(User newUser)
     {
-        String json = JsonConvert.SerializeObject(newUser);
-        Console.Write(json);
-        if(File.Exists(AppConst.USER_FILE))
+        if (!File.Exists(AppConst.USER_FILE))
         {
-            File.AppendText(json);
+            Directory.CreateDirectory(Path.GetDirectoryName(AppConst.USER_FILE));
+            File.Create(AppConst.USER_FILE);
         }
+
+        StreamReader reader = new StreamReader(AppConst.USER_FILE);
+        String contentOfFile = reader.ReadToEnd();
+        reader.Close();
+        List<User> users = JsonConvert.DeserializeObject<List<User>>(contentOfFile);
+        if(users == null)
+        {
+            users = new List<User>();
+        }
+        users.Add(newUser);
+
+        String newJson = JsonConvert.SerializeObject(users);
+        File.WriteAllText(AppConst.USER_FILE, newJson);
     }
+
+
 
 
 
