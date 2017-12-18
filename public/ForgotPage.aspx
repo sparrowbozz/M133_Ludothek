@@ -19,8 +19,16 @@
 				<asp:RequiredFieldValidator ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
 			</td>
 		</tr>
+           <tr><td>
+				<label for="PasswortField">Neues Passwort:</label>
+		    </td>
+			<td>
+				<asp:TextBox ID="PasswortField" runat="server" />
+				<asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="PasswortField" ErrorMessage="Bitte füllen Sie das Feld aus" runat="server" />
+			</td>
+		</tr>
         <tr>
-			<td></td>
+			<td><p class="error" id="servererror" runat="server"></p></td>
 			<td>
 				<input type="submit" value="Passwort zurücksetzen" id="forgotButton" runat="server"/>
 			</td>

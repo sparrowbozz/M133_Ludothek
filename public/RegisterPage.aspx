@@ -21,7 +21,7 @@
 				    <label for="EmailField">E-Mail:</label>	 
                 </td>
                 <td>     
-				    <asp:TextBox ID="EmailField" runat="server" />
+				    <asp:TextBox ID="EmailField" TextMode="Email" runat="server" />
 				    <asp:RequiredFieldValidator class="error" ID="requiredInputFieldValidator" ControlToValidate="EmailField" ErrorMessage="Bitte ausfüllen" runat="server" />
                 </td>
 		    </tr>
@@ -30,7 +30,7 @@
 		        </td>
 			    <td>
                     
-				    <asp:TextBox ID="EmailRepeatField" runat="server" />
+				    <asp:TextBox ID="EmailRepeatField" TextMode="Email" runat="server" />
                     <asp:RequiredFieldValidator class="error" ID="RequiredFieldValidator1" ControlToValidate="EmailRepeatField" ErrorMessage="Bitte ausfüllen" runat="server" />
                     <asp:CompareValidator class="error" ID="CompareMailValidator" ControlToValidate="EmailRepeatField" ControlToCompare="EmailField" ErrorMessage="Felder stimmen nicht überein." type="String" runat="server" />
                 </td>

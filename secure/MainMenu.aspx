@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="design/design.css" />
 
-
 </head>
 <body>
     <header class="clearfix">
@@ -18,7 +17,7 @@
                 
                 <div class="navigationElement" id="user">
                     
-                        Willkommen XXXXX, <a href="userInformation.aspx" />PROFIL BEARBEITEN</a>
+                        Willkommen <span id="username" runat="server">XXXXX</span>, <a href="EditProfil.aspx" />PROFIL BEARBEITEN</a> <a href="Logout.aspx" runat="server" id="logoutLink" >Abmelden</a>
                     
 
                     
@@ -52,7 +51,7 @@
         <main>
             <div id="containerMain">
                 
-                <div id="flexContainer">
+                <div id="flexContainer" runat="server">
 
                     <!--Items-->
                     <div class="flexItem">
@@ -77,7 +76,7 @@
                     </div>
                     
 
-		            <a href="#!" onClick="handleLogoutClick()" runat="server"></a>
+		            <a href="#!" onclick="handleLogoutClick()" runat="server">Ausloggen</a>
 
                 </div>  
             </div>

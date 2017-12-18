@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LoginPage.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" CodeFile="LoginPage.aspx.cs" Inherits="LoginPageController" %>
 
 <!DOCTYPE html>
 
@@ -34,7 +34,7 @@
 				        <label for="PasswordField" runat="server" />Password:</label>
 			        </td>
 			        <td>
-				        <asp:TextBox ID="PasswordField" runat="server" />
+				        <asp:TextBox ID="PasswordField" TextMode="Password" runat="server" />
 				        <asp:RequiredFieldValidator class="error" ID="requiredInputPwFieldValidator" ControlToValidate="PasswordField" ErrorMessage="Bitte ausfüllen" runat="server" />
 			        </td>
 		        </tr>
@@ -48,6 +48,9 @@
                         <a href="ForgotPage.aspx">Passwort zurücksetzen.</a>
                     </td>
 		        </tr>
+                <tr>
+                    <td colspan="2"><p id="servererror" runat="server"></p></td>
+                </tr>
 		    </table>
         </div>
     </form>

@@ -5,17 +5,20 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class MainMenu : System.Web.UI.Page
+public partial class MainMenu : SecureMasterPage
 {
-	protected void Page_Load(object sender, EventArgs e)
-	{
 
-	}
+    protected override void setupPageWithSession(Session session)
+    {
+        UserDetail detail = DataProvider.getInstance().getUserDetail(session.userId);
+        username.InnerHtml = detail.anrede + " " + detail.vorname + " " + detail.nachname;
+        String gameHtml = loadNewestGamesIntoContainer();
+        flexContainer.InnerHtml = gameHtml;
+    }
 
-	public void handleLogoutClick()
-	{
-		SessionHandler.getInstance().logoutUser();
-	}
+    protected override void handlePostback()
+    {
+        Console.Write("Es ist postback!");
+    }
 
-	
 }

@@ -5,52 +5,40 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class _Default : System.Web.UI.Page
+public partial class _Default : MasterPage
 {
-	protected void Page_Load(object sender, EventArgs e)
-	{
-		if(IsPostBack)
-		{
-            handleRegister();
 
-        }
-		handleSession();
-	}
-
-	/**
-	 * Redirect to User-Section if User already logged in 
-	 **/
-	private void handleSession()
-	{
-		String sessionKey = (String)Session["key"];
-		if (sessionKey != null)
-		{
-			redirectToUserSection();
-		}
-	}
-
-	/**
-	 * Redirect User to MainPage if logged in
-	 **/
-	private void redirectToUserSection()
-	{
-		//Response.Redirect("MainMenu.aspx");
-	}
+    protected override void handlePostback()
+    {
+        handleRegister();
+    }
 
     private void handleRegister()
     {
         String email = EmailField.Text;
         String password = PasswordField.Text;
-        User newUser = new User(email, password);
-        if(!DataProvider.getInstance().doesUserExist(newUser))
+        User newUser = new User(-1, email, password);
+        if(DataHandler.getInstance().doesUserExist(newUser) == null)
         {
             servererror.InnerHtml = "";
-            DataHandler.getInstance().saveUserInformation(newUser);
+            User createdUser = DataHandler.getInstance().registerNewUser(newUser);
+            Session session = SessionHandler.getInstance().tryLoginUser(createdUser.email, createdUser.password);
+            if(session!= null)
+            {
+                Session[AppConst.SESSION_KEY] = session.token;
+            }
+                Response.Redirect("../public/LoginPage.aspx");
+
         }
         else
         {
             servererror.InnerHtml = "Nutzer existiert bereits!";
         }
         
+    }
+
+    protected override bool isSecurePage()
+    {
+        return false;
     }
 }

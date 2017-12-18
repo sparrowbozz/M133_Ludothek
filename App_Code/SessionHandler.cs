@@ -9,60 +9,46 @@ using System.Web;
 public class SessionHandler
 {
 
-	private static SessionHandler instance;
+    private static SessionHandler instance;
 
-	public static SessionHandler getInstance()
-	{
-		if (instance == null)
-		{
-			instance = new SessionHandler();
-		}
-		return instance;
-	}
-
-	private String userToken;
-
-	private SessionHandler()
-	{
-		
-	}
-
-	public bool loginUser(String username, String password)
-	{
-		if (checkUserLogin(username, password)) {
-			userToken = generateUserToken();
-		}
-		return true;
-	}
-
-	public bool isUserLoggedIn()
-	{
-		return userToken != null;
-	}
-
-	public void logoutUser()
-	{
-		userToken = null;
-	}
-
-	private String generateUserToken()
-	{
-		return "userLoggedIn";
-	}
-
-	public String getUserToken()
-	{
-		return userToken;
-	}
-
-	private bool checkUserLogin(String email, String password)
-	{
-        User newUser = new User(email, password);
-        if (DataProvider.getInstance().doesUserExist(newUser))
+    public static SessionHandler getInstance()
+    {
+        if (instance == null)
         {
-            return true;
+            instance = new SessionHandler();
         }
-        return false;
-	}
+        return instance;
+    }
 
+    private SessionHandler()
+    {
+
+    }
+
+    public Session tryLoginUser(String email, String password)
+    {
+        User newUser = new User(-1, email, password);
+        User existingUser = DataHandler.getInstance().doesUserExist(newUser);
+        if (existingUser != null)
+        {
+            existingUser.email = email;
+            existingUser.password = password;
+            if (DataHandler.getInstance().checkUserLogin(existingUser))
+            {
+                return DataHandler.getInstance().handleSessionForUser(existingUser, true);
+            }
+        }
+        return new Session("-1", -1, false);
+    }
+
+    public Session logoutUser(String token)
+    {
+        Session session = DataProvider.getInstance().getSessionFromToken(token);
+        if(session != null)
+        {
+            User user = DataProvider.getInstance().getUserFromId(session.userId);
+            return DataHandler.getInstance().handleSessionForUser(user, false);
+        }
+        return new Session("-1", -1, false);
+    }
 }

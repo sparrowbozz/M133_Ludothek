@@ -8,13 +8,15 @@ using System.Web;
 /// </summary>
 public class User
 {
-
+    public int userId;
     public String email;
     public String password;
 
-    public User(String email, String password)
+    public User(int userId, String email, String password)
     {
+        this.userId = userId;
         this.email = email;
         this.password = password;
     }
+
 }
